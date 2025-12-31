@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+     <title>Свежие фрукты</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+	<link rel="manifest" href="/site.webmanifest" />
+	<link rel="1-228-1" href="images\1-228-1.jpg" sizes="32x32">
+    <style>
+	
+	 /* Базові стилі сторінки */
+  
+    body html {
+     overflow-x: hidden;
+      margin: 0;
+      /* padding: 1px; */
+      /* font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--c9);
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; */
+
+    }
+*, *::after, *::before {
+   box-sizing: border-box;
+}
+ 
+    /* Контейнери */
+    .container {
+      max-width:1320px;
+      
+      margin: 6px auto;
+      padding: 16px;
+    }
+ 
+:root {
+  /* Синий */
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+
+  /* Зелёный */
+  --green-50: #ecfdf5;
+  --green-100: #d1fae5;
+  --green-200: #a7f3d0;
+  --green-300: #6ee7b7;
+  --green-400: #34d399;
+  --green-500: #10b981;
+  --green-600: #059669;
+  --green-700: #047857;
+  --green-800: #065f46;
+  --green-900: #064e3b;
+
+  /* Красный */
+  --red-50: #fef2f2;
+  --red-100: #fee2e2;
+  --red-200: #fecaca;
+  --red-300: #fca5a5;
+  --red-400: #f87171;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --red-700: #b91c1c;
+  --red-800: #991b1b;
+  --red-900: #7f1d1d;
+
+  /* Жёлтый / Оранжевый */
+  --amber-50: #fffbeb;
+  --amber-100: #fef3c7;
+  --amber-200: #fde68a;
+  --amber-300: #fcd34d;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+  --amber-700: #b45309;
+  --amber-800: #92400e;
+  --amber-900: #78350f;
+
+  /* Фиолетовый */
+  --purple-50: #f5f3ff;
+  --purple-100: #ede9fe;
+  --purple-200: #ddd6fe;
+  --purple-300: #c4b5fd;
+  --purple-400: #a78bfa;
+  --purple-500: #8b5cf6;
+  --purple-600: #7c3aed;
+  --purple-700: #6d28d9;
+  --purple-800: #5b21b6;
+  --purple-900: #4c1d95;
+
+  /* Бирюзовый */
+  --teal-50: #f0fdfa;
+  --teal-100: #ccfbf1;
+  --teal-200: #99f6e4;
+  --teal-300: #5eead4;
+  --teal-400: #2dd4bf;
+  --teal-500: #14b8a6;
+  --teal-600: #0d9488;
+  --teal-700: #0f766e;
+  --teal-800: #115e59;
+  --teal-900: #134e4a;
+
+  /* Серые */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  /* Текст */
+  --text-dark: #111111;
+  --text-light: #ffffff;
+  --text-muted: #6b7280;
+
+/* Текстовые */
+     --text-dark: #111111;
+  --text-light: #ffffff;
+  --text-muted: #6b7280; /* приглушённый серый */
+}
+
+
+
+
+
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); gap: 20px; /* отступы между колонками */
+  overflow-x: hidden; /* скрыть прокрутку */
+  position: relative;
+  width: 100%;
+  height: auto; /* высота блока с картинкой */
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* картинка заполняет блок */
+  display: block;
+}
+
+/* фиксированный хедер */
+.site-header {
+  position: fixed;   /* приклеен к верху экрана */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.4); /* прозрачный фон */
+  color: #fff;
+  z-index: 1000;     /* поверх картинки */
+}
+
+.header-inner {
+  display: flex;
+  justify-content: center; /* по горизонтали */
+  align-items: center;
+  padding: 12px 20px;
+}
+
+.nav a {
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+/* бургер */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+}
+.burger span {
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+/* гармошка на мобильных */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+  }
+  .nav.show {
+    display: flex;
+    animation: accordion 0.4s ease-out;
+  }
+  .burger {
+    display: flex;
+  }
+}
+
+/* анимация гармошки */
+@keyframes accordion {
+  from { max-height: 0; opacity: 0; }
+  to   { max-height: 500px; opacity: 1; }
+}
+
+
+
+
+
+
+
+
+
+  
+  
+
+    .btn-zapis {
+      margin: 10px;
+      padding: 10px 20px;
+      background: #0077cc;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-zapis:hover { background: #005fa3; }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .modal.show {
+      display: block;
+      opacity: 1;
+    }
+    .modal-content {
+      background: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      transform: translateY(-20px);
+      transition: transform 0.3s ease;
+    }
+    .modal.show .modal-content {
+      transform: translateY(0);
+    }
+    .close {
+      float: right;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    #thankyou {
+      display: none;
+      color: rgb(69, 206, 206);
+      margin-top: 15px;
+      font-weight: bold;
+    }
+	
+
+
+
+
+.carousel {
+  position: relative;
+  max-width: 900px;
+  height: auto;
+  margin: 10px auto;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.slide {
+  min-width: 100%;   /* одно фото занимает всю ширину */
+  flex-shrink: 0;
+}
+
+
+
+.slide img { 
+  width: 100%; /* фото растягивается по ширине */ 
+  height: 600px; /* фиксируем высоту для всех */ 
+  object-fit: cover; /* фото заполняет блок, лишнее обрезается */ 
+  display: block; border-radius: 8px; /* опционально */ }
+
+
+
+
+
+
+
+
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.carousel-button.prev { left: 1rem; }
+.carousel-button.next { right: 1rem; }
+
+
+/* кнопки */
+/* .carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+   transform: translateX(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+} */
+
+
+
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.8);
+}
+.row-next {
+margin: 20px;
+}
+
+.order {
+  display: flex;
+  justify-content: center; /* по горизонтали */
+  align-items: center;     /* по вертикали */
+  height: 10vh;           /* высота контейнера */
+}
+  </style>
+  
+
+
+
+
+
+
+<style>
+  .snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    font-size: 20px;
+    pointer-events: none;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    to { transform: translateY(100vh); }
+  }
+
+
+
+        .img-box { position: relative; /* база для абсолютного позиционирования слоёв */ 
+            width: 100%; /* растягивается по родителю */
+            max-width: auto; /* контроль максимальной ширины */ 
+            margin: 0 auto; } 
+            .img-base 
+            { width: 100%;
+                 height: auto; 
+                 display: block; 
+                 border-radius: none; /* опционально */ }
+    
+            .tag {
+  position: absolute;     /* поверх картинки */
+  transform: translate(-50%, -50%); /* точка привязки — центр */
+  padding: 8px 22px;
+  background: #9b864d;
+
+  color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: clamp(20px, 1.6vw, 12px); /* масштаб надписей с шириной */
+}
+
+/* Координаты в ПРОЦЕНТАХ от размера картинки */
+.btn-1 { left: 20%; top: 20%; background: #b14ae0; }
+.btn-2 { left: 60%; top: 20%; background: #3273a8;}
+.btn-3 { left: 80%; top: 20%; background: #cc8110;
+}
+
+/* Координаты в ПРОЦЕНТАХ от размера картинки */
+.btn-4 { left: 20%; top: 30%; background: #b4d1da;}
+.btn-5 { left: 60%; top: 30%; background: #b4d1da;}
+.btn-6 { left: 80%; top: 30%; background: #cfac38;
+}
+
+
+/* Координаты в ПРОЦЕНТАХ от размера картинки */
+.btn-7 { left: 20%; top: 40%; background: #b4d1da;}
+.btn-8 { left: 60%; top: 40%; background: #b4d1da;}
+.btn-9 { left: 80%; top: 40%; background: #5f4b08;
+}
+
+/* Координаты в ПРОЦЕНТАХ от размера картинки */
+.btn-10 { left: 20%; top: 60%; background: #b4d1da;}
+.btn-11 { left: 60%; top: 60%; background: #b4d1da; }
+.btn-12 { left: 80%; top: 60%; background: #dbc16a;
+}
+
+
+
+
+
+
+
+</style>
+
+<script>
+function createSnowflake() {
+  const snowflake = document.createElement("div");
+  snowflake.classList.add("snowflake");
+  snowflake.textContent = "❄";
+  snowflake.style.left = Math.random() * window.innerWidth + "px";
+  snowflake.style.animationDuration = (5 + Math.random() * 5) + "s";
+  document.body.appendChild(snowflake);
+
+  setTimeout(() => snowflake.remove(), 10000);
+}
+
+setInterval(createSnowflake, 1300);
+</script>
+
+  
+</head>
+  <body>
+
+<div class="hero">
+  <header class="site-header"> 
+   
+    <div class="header-inner">
+      <div class="logo">
+        <img src="logo.png" alt="Логотип">
+            <a href="logo.png"></a>
+      </div>
+      <nav class="nav">
+        <a href="#">Главная</a>
+        <a href="#services">Каталог</a>
+        <a href="#about">О нас</a>
+        <a href="#order">Заказ</a>
+      </nav>
+    </div>
+  </header>
+</div>
+
+
+   <div class="img-box"> 
+        <img src="11.png" alt="Макет" class="img-base"> <!-- Слои поверх картинки -->
+         <button class="tag btn-1" >Купить</button>
+          <button class="tag btn-2">Подробнее</button> 
+        <div class="tag btn-3">-20%</div> 
+    </div>  
+
+
+   <div class="img-box"> 
+        <img src="2.png" alt="Макет" class="img-base"> <!-- Слои поверх картинки -->
+         <button class="tag btn-4">Купить</button> 
+         <button class="tag btn-5">Подробнее</button> 
+        <div class="tag btn-6">-20%</div> 
+    </div>  
+
+
+     <div class="img-box"> 
+        <img src="3.png" alt="Макет" class="img-base"> <!-- Слои поверх картинки -->
+         <button class="tag btn-7">Купить</button> 
+         <button class="tag btn-8">Подробнее</button> 
+        <div class="tag btn-9">-20%</div> 
+    </div>  
+
+
+     <div class="img-box"> 
+           <img src="3.png" alt="Макет" class="img-base"> <!-- Слои поверх картинки -->
+         <button class="tag btn-10">Купить</button> 
+         <button class="tag btn-11">Подробнее</button> 
+        <div class="tag btn-12">-20%</div> 
+    </div>  
+
+
+     <div class="img-box"> 
+           <img src="3.png" alt="Макет" class="img-base"> <!-- Слои поверх картинки -->
+         <button class="tag btn-1" type="button" onclick="openModal()"> Купить</button> 
+         <button class="tag btn-2">Подробнее</button> 
+        <div class="tag btn-3">-20%</div> 
+    </div>  
+
+
+     <div class="img-box"> 
+        <img src="6.png" alt="Макет" class="img-base"> <!-- Слои поверх картинки -->
+         <button class="tag btn-1" type="button" onclick="openModal()"> Купить</button> 
+          <button class="tag btn-2">Подробнее</button> 
+       <div class="tag btn-3">-20%</div> 
+    </div>  
+
+
+
+
+
+<div class="carousel"> 
+  <button class="carousel-button prev">&#10094;</button> 
+  <button class="carousel-button next">&#10095;</button> 
+  <ul class="slider"> <li class="slide active">
+    <img src="1.jpg" alt="Фото 1"></li>
+     <li class="slide"><img src="1.jpg" alt="Фото 2"></li>
+      <li class="slide"><img src="9.jpg" alt="Фото 3"></li> 
+      <li class="slide"><img src="3.jpg" alt="Фото 4"></li> 
+      <li class="slide"><img src="2.jpg" alt="Фото 5"></li> 
+      <li class="slide"><img src="1.jpg" alt="Фото 6"></li>
+      <li class="slide"><img src="9.jpg" alt="Фото 7"></li> 
+      <li class="slide"><img src="10.jpg" alt="Фото 8"></li> 
+      <li class="slide"><img src="6.jpg" alt="Фото 9"></li> 
+</ul> </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Второй ряд -->
+    <div class="row-next mb-3">
+      <div class="col bg-success text-white p-3 text-center">
+        
+		  <h1>Ваши свежие фрукты под заказ</h1>
+      </div>
+    </div>
+
+
+  <!-- Хедер на всю ширину (без контейнера) -->
+  <div class="bg-success  text-white p-3">
+    <h1 class="text-center"> Хедер на всю ширину </h1>
+  </div>
+
+
+
+    <!-- Третий ряд с 3 колонками -->
+     
+    <div class="row mb-3">
+      <div class="col-md-4 bg-warning p-3 text-center">Колонка 1</div>
+      <div class="col-md-4 bg-info p-3 text-center">Колонка 2</div>
+      <div class="col-md-4 bg-secondary text-white p-3 text-center">Колонка 3</div>
+    </div>
+ 
+
+
+<div class="container">
+  <div class="row">
+<div class="col-12 col-md-4 col-lg-4 bg-success   p-3">
+  Мобільність
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos tempore nihil tenetur ipsa excepturi debitis sapiente ullam doloribus aut omnis, cum est consequatur, repellendus dolor animi amet repellat possimus. Наявність мобільної лабораторії дозволяє оперативно виконати послуги з неруйнівного контролю на території замовника так само якісно як і в стаціонарних умовах. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos tempore nihil tenetur ipsa excepturi debitis sapiente ullam doloribus aut omnis, cum est consequatur, repellendus dolor animi amet repellat possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos tempore nihil tenetur ipsa excepturi debitis sapiente ullam doloribus aut omnis, cum est consequatur, repellendus dolor animi amet repellat possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos tempore nihil tenetur ipsa excepturi debitis sapiente ullam doloribus aut omnis, cum est consequatur, repellendus dolor animi amet repellat possimus.
+</div>
+<div class="col-12 col-md-4 col-lg-4 bg-success  p-3">Мобільність
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos tempore nihil tenetur ipsa excepturi debitis sapiente ullam doloribus aut omnis, cum est consequatur, repellendus dolor animi amet repellat possimus. Наявність мобільної лабораторії дозволяє оперативно виконати послуги з неруйнівного контролю на території замовника так само якісно як і в стаціонарних умовах. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos tempore nihil tenetur ipsa excepturi debitis sapiente ullam doloribus aut omnis, cum est consequatur, repellendus dolor animi amet repellat possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos tempore nihil tenetur ipsa excepturi debitis sapiente ullam doloribus aut omnis, cum est consequatur, repellendus dolor animi amet repellat possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos tempore nihil tenetur ipsa excepturi debitis sapiente ullam doloribus aut omnis, cum est consequatur, repellendus dolor animi amet repellat possimus.</div>
+  <div class="col-12 col-md-4 col-lg-4 bg-success  p-3">Мобільність
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos tempore nihil tenetur ipsa excepturi debitis sapiente ullam doloribus aut omnis, cum est consequatur, repellendus dolor animi amet repellat possimus. Наявність мобільної лабораторії дозволяє оперативно виконати послуги з неруйнівного контролю на території замовника так само якісно як і в стаціонарних умовах. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos tempore nihil tenetur ipsa excepturi debitis sapiente ullam doloribus aut omnis, cum est consequatur, repellendus dolor animi amet repellat possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos tempore nihil tenetur ipsa excepturi debitis sapiente ullam doloribus aut omnis, cum est consequatur, repellendus dolor animi amet repellat possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eos tempore nihil tenetur ipsa excepturi debitis sapiente ullam doloribus aut omnis, cum est consequatur, repellendus dolor animi amet repellat possimus.</div>
+</div>
+
+</div>
+
+
+
+
+
+
+  <main class="site-main">
+    <section class="hero">
+      <div class="container">
+        <h1>Ваши свежие фрукты под заказ</h1>
+		   <!-- Несколько кнопок -->
+  
+  </div>
+  </section>
+
+    <section id="services" class="services">
+      <div class="container">
+        <h2>Каталог</h2>
+        <div class="service-grid">
+          <!-- карточки -->
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container">
+        <h2>Почему выбирают нас?</h2>
+        <div class="features">
+          <!-- преимущества -->
+        </div>
+      </div>
+    </section>
+
+    <section id="order" class="order">
+      <div class="container-main">
+        <h2>Оставить заявку</h2>
+      <button class="btn-zapis" type="button" onclick="openModal()">Заказать</button>
+  <button class="btn-zapis" type="button" onclick="openModal()">Перезвоните мне</button>
+  <!-- Одна модалка -->
+  <div id="myModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">×</span>
+      <h2>Форма обратной связи</h2>
+      <form id="callbackForm" action="https://formspree.io/f/mzzyzbwl" method="POST">
+        <input type="text" name="name" placeholder="Ваше ім’я" required><br><br>
+        <input type="tel" name="phone" placeholder="Телефон" required><br><br>
+        <button type="submit">Надіслати</button>
+      </form>
+      <div id="thankyou">✅ Дякуємо! Ми зателефонуємо Вам найближчим часом.</div>
+    </div>
+  </div>
+      </div>
+    </section>
+  </main>
+
+
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Свежие фрукты. Все права защищены.</p>
+    </div>
+  </footer>
+  
+  
+ <script>
+    function openModal() {
+      const modal = document.getElementById('myModal');
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden'; // блокируем прокрутку
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('myModal');
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = ''; // возвращаем прокрутку
+    }
+
+    // Закрытие по клику на фон
+    window.addEventListener('click', (e) => {
+      const modal = document.getElementById('myModal');
+      if (e.target === modal) closeModal();
+    });
+
+    // Закрытие по Escape
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Сообщение "Спасибо" после отправки
+    document.getElementById('callbackForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // отменяем стандартную отправку
+      this.style.display = 'none'; // скрываем форму
+      document.getElementById('thankyou').style.display = 'block'; // показываем сообщение
+      setTimeout(closeModal, 3000); // закрываем через 3 секунды
+    });
+	
+	
+
+document.addEventListener("DOMContentLoaded", () => {
+  const burgerBtn = document.getElementById("burgerBtn");
+  const navMenu = document.getElementById("navMenu");
+
+  burgerBtn.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+  });
+});
+
+  </script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".slider");
+  const slides = document.querySelectorAll(".slide");
+  const prevBtn = document.querySelector(".carousel-button.prev");
+  const nextBtn = document.querySelector(".carousel-button.next");
+
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    currentIndex = index;
+    const slideWidth = slides[0].offsetWidth;
+    track.style.transform = `translateX(-${slideWidth * index}px)`;
+  }
+
+  prevBtn.addEventListener("click", () => {
+    showSlide(currentIndex - 1);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    showSlide(currentIndex + 1);
+  });
+
+  // начальный показ
+  showSlide(currentIndex);
+});
+
+
+
+</script>
+
+
+</body>
+</html>
